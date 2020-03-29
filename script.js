@@ -13,15 +13,14 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-function generatePassword() {
-  var password = prompt('what is the new password');
+
   //code goes here
   //return ??
-    var symbols = "!@#$%^&*(){}[];:<>/|\_-+=";
-    var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    var lowerCase = upperCase.toLowerCase(); 
-    var numbers = "0123456789";
-}
+var symbols = "!@#$%^&*(){}[];:<>/|\_-+=";
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCase = upperCase.toLowerCase(); 
+var numbers = "0123456789";
+
 var promptLength = parseInt(prompt("Choose between 8 and 128 characters for the length of your password.")); 
 
 if (promptLength < 8 || promptLength > 128) {
@@ -51,3 +50,11 @@ function generatePassword() {
         alert("We can't make you a password if you don't select any options. Please select at least one option."); 
         location.reload(); 
     }
+
+    var password = "";
+
+    for (var i = 0; i < promptLength; i++) {
+        password += charSet[Math.floor(Math.random() * charSet.length)]; 
+    }
+    document.getElementById("password").value = password;
+}

@@ -7,3 +7,5 @@ if so, it will ask for length of password and if they want special characters.
 
 The length of the password must be between 8 and 128 characters. The user will have the opportunity to decide what characters are included.
 
+If no selection is made when determining the characters of the password, then the password will not be generated.
+

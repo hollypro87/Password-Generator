@@ -17,4 +17,8 @@ function generatePassword() {
   var password = prompt('what is the new password');
   //code goes here
   //return ??
+    var symbols = "!@#$%^&*(){}[];:<>/|\_-+=";
+    var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var lowerCase = upperCase.toLowerCase(); 
+    var numbers = "0123456789";
 }

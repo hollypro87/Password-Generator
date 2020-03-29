@@ -1,60 +1,75 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+  
+   var generateBtn = document.querySelector("#generate");
+   
+   var abcUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+   var abcUpperArr = abcUpper.split("");
+   var abcLower = "abcdefghijklmnopqrstuvwxyz";
+   var abcLowerArr = abcLower.split("");
+   var num = "0123456789";
+   var numArr = num.split("");
+   var sym = "!#$%&\()*+,-./:;<=>?@^[\\]^_`{|}~";
+   var symArr = sym.split("");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+   function writePassword() {
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+   }
 
-  passwordText.value = password;
-
-}
-
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+function generatePassword() {
 
-  //code goes here
-  //return ??
-var symbols = "!@#$%^&*(){}[];:<>/|\_-+=";
-var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowerCase = upperCase.toLowerCase(); 
-var numbers = "0123456789";
+    var allChars = [];
+    var resultPass = "";
 
-var promptLength = parseInt(prompt("Choose between 8 and 128 characters for the length of your password.")); 
 
-if (promptLength < 8 || promptLength > 128) {
-    alert("You did not pick a number between 8 and 128.  Please try again."); 
-    location.reload(); 
-} else { 
-    var confirmSymbols = confirm("Would you like SYMBOLS in your password?"); 
-    var confirmUpper = confirm("Would you like UPPERCASE LETTERS in your password?"); 
-    var confirmLower = confirm("Would you like LOWERCASE LETTERS in your password?"); 
-    var confirmNumbers = confirm("Would you like NUMBERS in your password?"); 
-}
+    var Totlength = prompt("How many characters would you like your password to be?");
 
-function generatePassword() { 
-    if (confirmSymbols) {
-        charSet += symbols; 
-    }
-    if (confirmUpper) {
-        charSet += upperCase; 
-    }
-    if (confirmLower) {
-        charSet += lowerCase; 
-    }
-    if (confirmNumbers) {
-        charSet += numbers; 
-    }
-    if (charSet == "") { 
-        alert("We can't make you a password if you don't select any options. Please select at least one option."); 
-        location.reload(); 
+    if(Totlength <8 || Totlength > 128){
+        alert("It is recommended to have a password between 8 and 128 characters long!\nPlease start over.");
     }
 
-    var password = "";
+    
+    else{
+        if(confirm("Would you like your password to contain upper case letters?")){
+            Array.prototype.push.apply(allChars, abcUpperArr);
+        }
 
-    for (var i = 0; i < promptLength; i++) {
-        password += charSet[Math.floor(Math.random() * charSet.length)]; 
-    }
-    document.getElementById("password").value = password;
+        if(confirm("Would you like your password to contain lower case letters?")){
+            Array.prototype.push.apply(allChars, abcLowerArr);
+        }
+
+        if(confirm("Would you like your password to contain numbers?")){
+            Array.prototype.push.apply(allChars, numArr);
+        }
+
+        if(confirm("Would you like your password to contain symbols?")){
+            Array.prototype.push.apply(allChars, symArr);
+        }
+
+        if(allChars.length===0){
+            alert("You must select at lease 1 type of characters to generate a password!\nPlease start over.");
+        }
+
+
+        else{
+            for(var i=0; i<Totlength; i++){
+                var random = Math.floor(Math.random()*allChars.length);
+                resultPass += allChars[random];
+            }
+        }
+        }
+
+        document.getElementById("password").innerHTML = resultPass;
+   }
+
+// Bonus! function to copy password to clipboard
+
+function copyPass(){
+
+    document.querySelector("textarea").select();
+    document.execCommand("Copy");
+    alert("Password copied to clipboard!");
 }

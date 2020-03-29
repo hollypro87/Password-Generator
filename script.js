@@ -22,3 +22,14 @@ function generatePassword() {
     var lowerCase = upperCase.toLowerCase(); 
     var numbers = "0123456789";
 }
+var promptLength = parseInt(prompt("Choose between 8 and 128 characters for the length of your password.  Please type a number...")); 
+
+if (promptLength < 8 || promptLength > 128) {
+    alert("You did not pick a number between 8 and 128.  Please try again."); 
+    location.reload(); 
+} else { 
+    var confirmSymbols = confirm("Would you like SYMBOLS in your password?"); 
+    var confirmUpper = confirm("Would you like UPPERCASE LETTERS in your password?"); 
+    var confirmLower = confirm("Would you like LOWERCASE LETTERS in your password?"); 
+    var confirmNumbers = confirm("Would you like NUMBERS in your password?"); 
+}

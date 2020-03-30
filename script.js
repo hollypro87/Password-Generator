@@ -1,36 +1,36 @@
-  
-   var generateBtn = document.querySelector("#generate");
-   
-   var abcUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-   var abcUpperArr = abcUpper.split("");
-   var abcLower = "abcdefghijklmnopqrstuvwxyz";
-   var abcLowerArr = abcLower.split("");
-   var num = "0123456789";
-   var numArr = num.split("");
-   var sym = "!#$%&\()*+,-./:;<=>?@^[\\]^_`{|}~";
-   var symArr = sym.split("");
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 
-   function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
-  
-    passwordText.value = password;
-   }
+var abcUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var abcUpperArr = abcUpper.split("");
+var abcLower = "abcdefghijklmnopqrstuvwxyz";
+var abcLowerArr = abcLower.split("");
+var num = "0123456789";
+var numArr = num.split("");
+var sym = "!#$%&\()*+,-./:;<=>?@^[\\]^_`{|}~";
+var symArr = sym.split("");
 
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
-
-    var allChars = [];
+  var allChars = [];
     var resultPass = "";
-
 
     var Totlength = prompt("How many characters would you like your password to be?");
 
     if(Totlength <8 || Totlength > 128){
         alert("It is recommended to have a password between 8 and 128 characters long!\nPlease start over.");
     }
-
     
     else{
         if(confirm("Would you like your password to contain upper case letters?")){
@@ -53,7 +53,6 @@ function generatePassword() {
             alert("You must select at lease 1 type of characters to generate a password!\nPlease start over.");
         }
 
-
         else{
             for(var i=0; i<Totlength; i++){
                 var random = Math.floor(Math.random()*allChars.length);
@@ -61,15 +60,6 @@ function generatePassword() {
             }
         }
         }
-
-        document.getElementById("password").innerHTML = resultPass;
-   }
-
-// Bonus! function to copy password to clipboard
-
-function copyPass(){
-
-    document.querySelector("textarea").select();
-    document.execCommand("Copy");
-    alert("Password copied to clipboard!");
-}
+        return resultPass;
+   } 
+   

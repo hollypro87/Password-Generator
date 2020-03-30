@@ -9,3 +9,4 @@ The length of the password must be between 8 and 128 characters. The user will h
 
 If no selection is made when determining the characters of the password, then the password will not be generated.
 
+After a ton of trial and error, I was finally able to get the password to generate after running the script.
